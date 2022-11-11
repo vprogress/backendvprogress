@@ -30,7 +30,7 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 
 //Rutas
 app.get('/', (req, res) => {    
-    res.send("Hola mundo")
+    res.send("Hola Mundo")
 })
 
 app.post("/user", (req, res) => {    
