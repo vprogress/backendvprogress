@@ -21,6 +21,22 @@ class ProfileController extends ProfileDao{
         ProfileController.consultOneProfile(req.params.codigo, res);
 
     }
+
+    /**
+     * se crea el controlador para la creación de un nuevo perfile
+     * nota: el req.body lo que hace es extraer los datos que fueron diligenciados en el formulario y
+     * vienen en formato json
+     * @param req : contiene los datos enviados desde el frontend
+     * @param res : envía la respuesta al frontend 
+     */
+    public insertProfile(req: Request, res: Response){
+        ProfileController.createProfile(req.body, res);
+    }
+
+    public delProfile(req: Request, res: Response){
+        ProfileController.deleteProfile(req.params.codigo, res);
+
+    }
 }
 
 //se crea un objeto de tipo ProfileController para que en el export no se  utilice la clase si no el objeto
