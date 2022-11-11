@@ -8,6 +8,7 @@ const UserSchema=new Schema<UserEntities>(
         userMail:{ type:String, required:true, unique:true},
         userPass:{ type:String, required:true},
         userProfile:{ type: Types.ObjectId, ref:"Profile", required:true},
+        userPhoto:{type:String, default:"NoPhoto"},
     },
     {
         versionKey: false

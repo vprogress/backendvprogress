@@ -4,12 +4,14 @@ class UserEntities{
     public userMail: string;
     public userPass: string;
     public userProfile: ProfileEntitie;
+    public userPhoto: string 
 
-    constructor(User:string, mail:string, pass:string, profile:ProfileEntitie){
+    constructor(User:string, mail:string, pass:string, profile:ProfileEntitie, photo:string){
         this.userName=User;
         this.userMail=mail;
         this.userPass=pass;
         this.userProfile=profile;
+        this.userPhoto=photo;
 
     }
 }

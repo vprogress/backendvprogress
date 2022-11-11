@@ -1,7 +1,8 @@
 import { connect } from "mongoose";
 
 const ConectDB=()=>{
-    const urlDB=String(process.env.DB_MONGO);
+   // const urlDB=String(process.env.DB_MONGO);
+   const urlDB=String(process.env.DB_MONGO_LOCAL);
     const pass=String(process.env.PASSWORD);
     const port=Number(process.env.PORT);
 

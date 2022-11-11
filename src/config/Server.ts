@@ -4,6 +4,13 @@ import ConectDB from './ConectDB';
 import cors from "cors"
 import morgan from "morgan"
 
+/**
+ * este import lo que hace es tomar el export de la clase ProfileRoute y cambiarle el 
+ * nombre a apiProfileRoute para no generar confusión y facilitar su use con respecto a la definición 
+ * de las rutas
+ */
+import apiProfileRoute from "../route/ProfileRoute"
+
 class Server {
     //Variable para cargar la condiguracion de todo lo que se va a hacer
     public app: express.Application;
@@ -34,6 +41,7 @@ class Server {
     }
 
     public initRoutes(){
+        this.app.use("/api/profile", apiProfileRoute);
 
     }
 
