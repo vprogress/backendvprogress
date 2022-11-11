@@ -5,20 +5,28 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon build/index.js",
+    "dev": "nodemon /server.js",
+    "start": "nodemon /index.js",
     "build": "tsc -w"
   },
   "author": "Lportillo",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.1",
     "cors": "^2.8.5",
+    "currently": "^0.0.8",
     "express": "^4.18.2",
+    "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.7.2",
     "morgan": "^1.10.0",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.0",
+    "script": "^0.1.4",
     "tsc-init": "^2.1.0",
-    "typescript": "^4.8.4"
+    "typescript": "^4.8.4",
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
