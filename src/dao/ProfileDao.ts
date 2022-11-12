@@ -69,9 +69,9 @@ class ProfileDao{
         }
     }
 
-    protected static async deleteProfile(idProfile:any, res: Response): Promise <any>{
+    protected static async deleteProfile(idProfile:any, res: Response):Promise <any>{
         const profileToDelete= {_id: idProfile};
-        const countUser = await UserSchema.countDocuments({ userCodProfile: profileToDelete});
+        const countUser = await UserSchema.countDocuments({ userProfile: profileToDelete});
 
         if (countUser>0) {
             res.status(400).json({result:"Error, el perfil no se puede eliminar, debido a que tiene usuarios asociados"})
@@ -97,6 +97,32 @@ class ProfileDao{
             
         }
     }
+
+    protected static async updateProfile(idProfile:any, dataProfile: any, res: Response):Promise <any>{
+        // se busca el perfil a actualizar por el id, en caso que lo encuentre se va a
+        // modificar, si no se encuentra se informa al frontend
+        const searchProfile = await ProfileSchema.findById(idProfile).exec();
+        if (searchProfile) {
+            // si el perfil existe se actuaiza tomando como referencia el _id recibido
+            ProfileSchema.findOneAndUpdate(
+                {_id: idProfile}, // filtro de busqueda del perfil a actualizar
+                { $set: dataProfile}, // datos a ser actualizados
+                (myError: any, myObject: any) => {
+                    if (myError){
+                        res.status(400).json({result:"El perfil no se puede actualizar"}); 
+                    }else{
+                        res.status(200).json({result:"Perfil actulizado exitosamente", 
+                        profileOld: myObject,
+                        profileNew: dataProfile});
+                    }
+                }
+            );
+        } else {
+            res.status(400).json({result:"El perfil no existe, no se actualiza"}); 
+        }
+    }
+
+    
 
     
 }

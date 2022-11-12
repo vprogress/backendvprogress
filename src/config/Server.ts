@@ -17,6 +17,8 @@ class Server {
 
     constructor(){
         //Habilitamos las varianles de ambiente
+        const prueb = "HOla";
+
         dotenv.config({
             path:"variables.env"
         })
@@ -42,6 +44,9 @@ class Server {
 
     public initRoutes(){
         this.app.use("/api/profile", apiProfileRoute);
+       // this.app.use("/api/users", apiProfileRoute);
+       // this.app.use("/api/product", apiProfileRoute);
+       // this.app.use("/api/ventas", apiProfileRoute);
 
     }
 

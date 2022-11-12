@@ -37,6 +37,11 @@ class ProfileController extends ProfileDao{
         ProfileController.deleteProfile(req.params.codigo, res);
 
     }
+
+    public update(req: Request, res: Response){
+        ProfileController.updateProfile(req.params.codigo, req.body, res);
+
+    }
 }
 
 //se crea un objeto de tipo ProfileController para que en el export no se  utilice la clase si no el objeto

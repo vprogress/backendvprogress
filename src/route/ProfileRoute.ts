@@ -21,6 +21,7 @@ class ProfileRoute{
         this.rutaApi.get("/oneprofile/:codigo", pController.consultOne);
         this.rutaApi.put("/createprofile", pController.insertProfile);
         this.rutaApi.delete("/deleteprofile/:codigo", pController.delProfile);
+        this.rutaApi.post("/updateprofile/:codigo", pController.update);
 
     }
 }
