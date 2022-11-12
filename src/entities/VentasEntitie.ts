@@ -3,7 +3,6 @@ import UserEntities from './UserEntitie';
 class VentasEntities{
     public codeProduct: ProductEntitie;
     public codeClient: UserEntities;
-    //public codeClient: Number;
     public valorVenta: Number;
     public dateVenta: Date;
     public cantidadProduct: Number;
