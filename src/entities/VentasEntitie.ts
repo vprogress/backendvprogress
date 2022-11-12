@@ -1,12 +1,14 @@
 import ProductEntitie from './ProductEntitie';
+import UserEntities from './UserEntitie';
 class VentasEntities{
     public codeProduct: ProductEntitie;
-    public codeClient: Number;
+    public codeClient: UserEntities;
+    //public codeClient: Number;
     public valorVenta: Number;
     public dateVenta: Date;
     public cantidadProduct: Number;
 
-    constructor(codeProduct:ProductEntitie, codeClient:Number, valor:Number, date:Date, cantidad:Number){
+    constructor(codeProduct:ProductEntitie, codeClient:UserEntities, valor:Number, date:Date, cantidad:Number){
         this.codeProduct=codeProduct;
         this.codeClient=codeClient;
         this.valorVenta=valor;

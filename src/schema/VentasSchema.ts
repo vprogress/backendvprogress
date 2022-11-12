@@ -4,8 +4,10 @@ import ProductEntitie from '../entities/ProductEntitie';
 
 const VentasSchema=new Schema<VentasEntities>(
     { 
-        codeProduct:{ type:Number, required:true},
-        codeClient:{ type:Number, required:true},
+        //codeProduct:{ type:Number, required:true},
+        codeProduct:{ type: Types.ObjectId, ref:"Product", required:true },
+        //codeClient:{ type:Number, required:true},
+        codeClient:{ type: Types.ObjectId, ref:"User", required:true},
         valorVenta:{ type:Number, required:true},
         dateVenta:{ type: Date, required:true},
         cantidadProduct:{ type: Number, required:true},
