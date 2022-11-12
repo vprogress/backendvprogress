@@ -32,13 +32,12 @@ class UserController extends UserDao{
     }
 
 
-/*
+
     public update(req: Request, res: Response){
-        ProductController.updateProduct(req.params.codigo, req.body, res);
+        UserController.updateUser(req.params.codigo, req.body, res);
 
     }
 
-*/
 
 }
 

@@ -17,7 +17,7 @@ class UserRoute{
         //Deberia ser post para crear nuevos datos por buenas practicas.
         this.rutaApi.put("/createuser", usController.insertUser);
         this.rutaApi.delete("/deleteuser/:codigo", usController.delUser);
-        //this.rutaApi.post("/updateproduct/:codigo", proController.update);
+        this.rutaApi.post("/updateuser/:codigo", usController.update);
         //Deberia ser patch o put para actualizar por buenas practicas.
 
     }

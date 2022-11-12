@@ -55,8 +55,8 @@ class UserDao{
     
     protected static async deleteUser(idUser:any, res: Response):Promise <any>{
         const userToDelete= {_id: idUser};
-        const countVentas = await UserSchema.countDocuments({ codeClient: userToDelete});
-
+        const countVentas = await VentasSchema.countDocuments({ codeClient: userToDelete});
+        console.log("Contador de ventas: ", countVentas);
         if (countVentas>0) {
             res.status(400).json({result:"Error, el usuario no se puede eliminar, debido a que tiene ventas asociadas."})
             
@@ -83,23 +83,22 @@ class UserDao{
     }
 
 
-/*
-    protected static async updateProduct(idProduct:any, dataProduct: any, res: Response):Promise <any>{
-        // se busca el producto a actualizar por el id, en caso que lo encuentre se va a
-        // modificar, si no se encuentra se informa al frontend
-        const searchProduct = await ProductSchema.findById(idProduct).exec();
-        if (searchProduct) {
+
+    protected static async updateUser(idUser:any, dataUser: any, res: Response):Promise <any>{
+
+        const searchUser = await UserSchema.findById(idUser).exec();
+        if (searchUser) {
             // si el producto existe se actuaiza tomando como referencia el _id recibido
-            ProductSchema.findOneAndUpdate(
-                {_id: idProduct}, // filtro de busqueda del producto a actualizar
-                { $set: dataProduct}, // datos a ser actualizados
+            UserSchema.findOneAndUpdate(
+                {_id: idUser}, // filtro de busqueda del producto a actualizar
+                { $set: dataUser}, // datos a ser actualizados
                 (myError: any, myObject: any) => {
                     if (myError){
-                        res.status(400).json({result:"El producto no se puede actualizar."}); 
+                        res.status(400).json({result:"El usuario no se puede actualizar."}); 
                     }else{
-                        res.status(200).json({result:"Producto actualizado exitosamente.", 
-                        profileOld: myObject,
-                        profileNew: dataProduct});
+                        res.status(200).json({result:"Uusario actualizado exitosamente.", 
+                        userOld: myObject,
+                        userNew: dataUser});
                     }
                 }
             );
@@ -108,7 +107,7 @@ class UserDao{
         }
     }
 
-   */ 
+ 
 
     
  }
