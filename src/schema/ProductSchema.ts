@@ -5,7 +5,7 @@ const ProductSchema = new Schema<ProductEntitie>(
     {
     productName: {type:String, required:true, unique:true, trim:true },
     productDescription: {type:String, required:true},
-    productStock: {type:Number},
+    productStock: {type:Number, default:0},
     productValue: {type:Number, required:true, trim:true},
     productImage: {type:String},
     },

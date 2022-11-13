@@ -124,6 +124,14 @@ class ProductDao{
         }
     }
 
+    protected static async listProductNotEmpty(res: Response):Promise <any>{
+
+        const notEmpty= {productStock:{$gt:0}};
+        const allProductsNotEmpty= await ProductSchema.find(notEmpty).sort({_id:-1}) 
+        res.status(200).json(allProductsNotEmpty);
+
+    }
+
     
 
     

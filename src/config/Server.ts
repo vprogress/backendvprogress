@@ -12,6 +12,7 @@ import morgan from "morgan"
 import apiProfileRoute from "../route/ProfileRoute"
 import apiProductRoute from "../route/ProductRoute"
 import apiUserRoute from "../route/UserRoute"
+import apiCarRoute from "../route/CarritoRoute"
 import  apiVentasRoute  from "../route/VentasRoute";
 
 class Server {
@@ -48,6 +49,9 @@ class Server {
     public initRoutes(){
         this.app.use("/api/profile", apiProfileRoute);
         this.app.use("/api/users", apiUserRoute);
+        this.app.use("/api/product",  apiProductRoute);
+        this.app.use("/api/carrito",  apiCarRoute);
+       // this.app.use("/api/users", apiProfileRoute);
         this.app.use("/api/product", apiProductRoute);
         this.app.use("/api/ventas", apiVentasRoute);
 
