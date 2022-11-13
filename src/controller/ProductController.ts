@@ -23,7 +23,7 @@ class ProductController extends ProductDao{
     }
 
     /**
-     * se crea el controlador para la creación de un nuevo perfile
+     * se crea el controlador para la creación de un nuevo Producto
      * nota: el req.body lo que hace es extraer los datos que fueron diligenciados en el formulario y
      * vienen en formato json
      * @param req : contiene los datos enviados desde el frontend
