@@ -47,9 +47,9 @@ class Server {
 
     public initRoutes(){
         this.app.use("/api/profile", apiProfileRoute);
-       // this.app.use("/api/users", apiProfileRoute);
+        this.app.use("/api/users", apiUserRoute);
         this.app.use("/api/product", apiProductRoute);
-       // this.app.use("/api/ventas", apiProfileRoute);
+        this.app.use("/api/ventas", apiVentasRoute);
 
     }
 
