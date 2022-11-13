@@ -8,12 +8,12 @@ class CarritoDao {
 
     protected static async gestionarCarrito(datosCarrito: any, res: Response): Promise<any> {
 
-        let ventaTotal = 20;
+        let ventaTotal = 0;
         let resultado = "exitoso";
         let isValid = true;
 
 
-        
+
         for (let itemVenta of datosCarrito) {
             //validamos que el usuario que hace la compra existe
             const idUser = itemVenta.codeClient;
@@ -65,7 +65,7 @@ class CarritoDao {
                         isValid = false;
                         console.log("resultado : ", resultado, ", total: ", ventaTotal);
                     }
-                    else { 
+                    else {
                         ventaTotal = (ventaTotal + (cantidadAComprar * productCompra.productValue))
                         const newCantidad = productCompra.productStock - cantidadAComprar;
                         const idProduct ={_id: itemVenta.codeProduct}
@@ -109,7 +109,6 @@ class CarritoDao {
             });
         }
 
-       
     }
 }
 export default CarritoDao;
