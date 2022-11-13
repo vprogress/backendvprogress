@@ -93,7 +93,7 @@ class CarritoDao {
                             if (myError) {
                                 resultado = "No se puede actualizar el producto";
                                 isValid = false;
-                                console.log("resultado : ", resultado, ", total: ", ventaTotal);
+                               // console.log("resultado : ", resultado, ", total: ", ventaTotal);
                             }
                         });
 
@@ -101,7 +101,7 @@ class CarritoDao {
                     }
                 }
 
-                console.log("resultado : ", resultado, ", total: ", ventaTotal);
+                //console.log("resultado : ", resultado, ", total: ", ventaTotal);
 
             }
         }
