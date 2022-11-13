@@ -17,9 +17,20 @@ class VentasDao{
          * la siguiente línea es la que trae los perfiles existentes en la bd y el -1 los ordena en forma ascendente
          * parametro rest entregará el json resultante de la consulta hecha al mongo
         */
-        const allVentas= await VentasSchema.find().sort({_id:-1}) 
-        res.status(200).json(allVentas);
-    }
+        const allVentas= await VentasSchema.find().sort({_id:-1})
+        .populate({path:"codeProduct", select:"productName"}) 
+        .populate({path:"codeClient", select:"userName userMail"})
+        .exec((myError, myObject)=>{
+            if (myError){
+                res.status(400).json({respuesta: "no se pueden obtener las ventas"})
+            }
+            else{
+                res.status(200).json(myObject)
+            }
+
+        });
+        
+        }
 
      /**
      * Método para consultar un sólo perfil de acuerdo al id indicado
@@ -28,7 +39,8 @@ class VentasDao{
      */
     protected static async consultOneVenta(idVentas:any, res:Response):Promise <any>{
         const ventasToSearch= {_id: idVentas};
-        const ventasResult= await VentasSchema.findOne(ventasToSearch).exec();
+        const ventasResult= await VentasSchema.findOne(ventasToSearch)
+        .exec();
         if (ventasResult) {
             res.status(200).json(ventasResult);
         } else { 

@@ -8,12 +8,12 @@ class CarritoDao {
 
     protected static async gestionarCarrito(datosCarrito: any, res: Response): Promise<any> {
 
-        let ventaTotal = 20;
+        let ventaTotal = 0;
         let resultado = "exitoso";
         let isValid = true;
 
 
-        
+        //se va a validar que la compra se pueda realizar
         for (let itemVenta of datosCarrito) {
             //validamos que el usuario que hace la compra existe
             const idUser = itemVenta.codeClient;
@@ -21,11 +21,13 @@ class CarritoDao {
             const userCompra = await UserSchema.findOne(userToSearch).exec();
 
             if (userCompra) {
+                //si el usuario existe se valida que exista el producto
                 const idProduct = itemVenta.codeProduct;
                 const productToSearch = { _id: idProduct };
                 const productCompra = await ProductSchema.findOne(productToSearch).exec();
 
                 if (productCompra) {
+                    //si el producto existe se valida que tenga existencia suficiente
                     const cantidadAComprar = itemVenta.cantidadProduct;
                     if (productCompra.productStock < cantidadAComprar) {
 
@@ -36,7 +38,7 @@ class CarritoDao {
                 }
                 else {
 
-                    resultado = "Usuario no válido para realizar compras";
+                    resultado = "producto no existente para realizar compras";
                     isValid = false;
 
                 }
@@ -66,8 +68,11 @@ class CarritoDao {
                         console.log("resultado : ", resultado, ", total: ", ventaTotal);
                     }
                     else { 
-                        ventaTotal = (ventaTotal + (cantidadAComprar * productCompra.productValue))
+                        const valorVenta=(cantidadAComprar * productCompra.productValue);
+                        ventaTotal = (ventaTotal + valorVenta )
                         const newCantidad = productCompra.productStock - cantidadAComprar;
+
+                        //actualizar el stock de productos
                         const idProduct ={_id: itemVenta.codeProduct}
                         const productUpdate = { _id: itemVenta.codeProduct, productStock: newCantidad };
                         console.log(productUpdate);
@@ -79,6 +84,9 @@ class CarritoDao {
                                     console.log("la actualizacion de valor es: ",myObject)
                                 }
                             });
+
+
+                        itemVenta.valorVenta = valorVenta;
 
                         const newVenta = new VentasSchema(itemVenta);
                         newVenta.save((myError, myObjectResult) => {
@@ -101,7 +109,7 @@ class CarritoDao {
         if (isValid) {
             res.status(200).json({
                 respuesta: "su compra fue registrada exitosamente",
-                neto: ventaTotal
+                ValorTotalVenta: ventaTotal
             });
         } else {
             res.status(400).json({
