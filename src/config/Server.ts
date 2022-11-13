@@ -12,6 +12,7 @@ import morgan from "morgan"
 import apiProfileRoute from "../route/ProfileRoute"
 import apiProductRoute from "../route/ProductRoute"
 import apiUserRoute from "../route/UserRoute"
+import apiCarRoute from "../route/CarritoRoute"
 
 class Server {
     //Variable para cargar la condiguracion de todo lo que se va a hacer
@@ -48,6 +49,7 @@ class Server {
         this.app.use("/api/profile", apiProfileRoute);
         this.app.use("/api/users", apiUserRoute);
         this.app.use("/api/product",  apiProductRoute);
+        this.app.use("/api/carrito",  apiCarRoute);
        // this.app.use("/api/ventas", apiProfileRoute);
 
     }

@@ -42,6 +42,12 @@ class ProductController extends ProductDao{
         ProductController.updateProduct(req.params.codigo, req.body, res);
 
     }
+
+
+    public consultNotEmpty(req: Request, res: Response){
+        
+        ProductController.listProductNotEmpty(res);
+    }
 }
 
 //se crea un objeto de tipo ProfileController para que en el export no se  utilice la clase si no el objeto

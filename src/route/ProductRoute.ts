@@ -23,6 +23,7 @@ class ProductRoute{
         this.rutaApi.put("/createproduct", proController.insertProduct);
         this.rutaApi.delete("/deleteproduct/:codigo", proController.delProduct);
         this.rutaApi.post("/updateproduct/:codigo", proController.update);
+        this.rutaApi.get("/notempty", proController.consultNotEmpty);
         //Deberia ser patch o put para actualizar por buenas practicas.
 
     }
