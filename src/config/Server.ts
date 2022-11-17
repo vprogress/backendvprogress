@@ -13,7 +13,7 @@ import apiProfileRoute from "../route/ProfileRoute"
 import apiProductRoute from "../route/ProductRoute"
 import apiUserRoute from "../route/UserRoute"
 import apiCarRoute from "../route/CarritoRoute"
-import  apiVentasRoute  from "../route/VentasRoute";
+import apiVentasRoute  from "../route/VentasRoute";
 
 class Server {
     //Variable para cargar la condiguracion de todo lo que se va a hacer
