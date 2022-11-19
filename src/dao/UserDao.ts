@@ -37,6 +37,8 @@ class UserDao{
         }
         else{
             //se crea un nuevo objeto de tipo perfil eschema con los datos que vienen en el newProfile
+            newUser.userPass = cifrado.hashSync(newUser.userPass, 10);
+
             const objProduct=new UserSchema(newUser);
             objProduct.save(
                 (myError, myObjectResult)=>{
@@ -109,11 +111,14 @@ class UserDao{
 
     protected static async initSesion(dataUser:any, res: Response):Promise <any>{
         const userMail = dataUser.userMail;
-        const userPass = dataUser.userPass;
+        console.log("userPassDB: ", dataUser.userPass);
+        const userPass = dataUser.userPass;// cifrado.hashSync(dataUser.userPass, 10);//dataUser.userPass;
         UserSchema.findOne({userMail: userMail})
         .populate({path: "userProfile", select: "profileName"})
         .exec((myError, myObject) =>  {
             if (myObject) {
+                console.log("userPassDB: ", myObject.userPass);
+                console.log("userPass: ", userPass);
                 const keyOk = cifrado.compareSync ( userPass, myObject.userPass);
                 if (keyOk)
                 {

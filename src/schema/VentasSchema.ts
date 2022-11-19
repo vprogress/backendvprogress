@@ -7,7 +7,7 @@ const VentasSchema=new Schema<VentasEntities>(
         codeProduct:{type: Types.ObjectId, ref:"Product", required:true},
         codeClient:{ type: Types.ObjectId, ref:"User", required:true},
         valorVenta:{ type:Number, required:true},
-        dateVenta:{ type: Date, required:true},
+        dateVenta:{ type: Date, required:true, default: new Date()},
         cantidadProduct:{ type: Number, required:true},
     },
     {

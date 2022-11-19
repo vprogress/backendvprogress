@@ -52,15 +52,15 @@ class Server {
         this.app.use("/api/profile", apiProfileRoute);
         this.app.use("/api/product", apiProductRoute);
         this.app.use("/api/carrito",  apiCarRoute);
-        this.app.use("/api/users", apiProfileRoute);
         this.app.use("/api/product", apiProductRoute);
         this.app.use("/api/ventas", apiVentasRoute);
 
         // debe estar autenticado para acceder a las funcionalidades CRUD
-        // this.app.use("/api/users", securityOwn.tokenAnalize, apiUserRoute);
+        
+      //  this.app.use("/api/users", securityOwn.tokenAnalize, apiUserRoute);
         this.app.use("/api/users", apiUserRoute);
         // puede crear un usuario invitado y loguearse
-        this.app.use("/api/users", apiUserRoutePublic);
+        this.app.use("/api/public/users", apiUserRoutePublic);
 
     }
 

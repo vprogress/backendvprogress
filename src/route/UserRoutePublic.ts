@@ -13,7 +13,7 @@ class UserRoutePublic{
     public configRoute(){ 
         
         this.rutaApi.put("/createuserguest", usController.insertUserGuest);
-        this.rutaApi.put("/login", usController.autenticUser);
+        this.rutaApi.post("/login", usController.autenticUser);
 
     }
 }
