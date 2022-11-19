@@ -11,9 +11,11 @@ import morgan from "morgan"
  */
 import apiProfileRoute from "../route/ProfileRoute"
 import apiProductRoute from "../route/ProductRoute"
-import apiUserRoute from "../route/UserRoute"
+import apiUserRoute from "../route/UserRoutePrivate"
+import apiUserRoutePublic from "../route/UserRoutePublic"
 import apiCarRoute from "../route/CarritoRoute"
 import  apiVentasRoute  from "../route/VentasRoute";
+import securityOwn from '../middleware/SecurityOwn';
 
 class Server {
     //Variable para cargar la condiguracion de todo lo que se va a hacer
@@ -48,12 +50,17 @@ class Server {
 
     public initRoutes(){
         this.app.use("/api/profile", apiProfileRoute);
-        this.app.use("/api/users", apiUserRoute);
-        this.app.use("/api/product",  apiProductRoute);
+        this.app.use("/api/product", apiProductRoute);
         this.app.use("/api/carrito",  apiCarRoute);
        // this.app.use("/api/users", apiProfileRoute);
         this.app.use("/api/product", apiProductRoute);
         this.app.use("/api/ventas", apiVentasRoute);
+
+        // debe estar autenticado para acceder a las funcionalidades CRUD
+        // this.app.use("/api/users", securityOwn.tokenAnalize, apiUserRoute);
+        this.app.use("/api/users", apiUserRoute);
+        // puede crear un usuario invitado y loguearse
+        this.app.use("/api/users", apiUserRoutePublic);
 
     }
 

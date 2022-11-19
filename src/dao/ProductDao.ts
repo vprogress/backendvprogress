@@ -17,7 +17,9 @@ class ProductDao{
          * parametro rest entregará el json resultante de la consulta hecha al mongo
         */
         const allProducts= await ProductSchema.find().sort({_id:-1}) 
+        console.log(allProducts);
         res.status(200).json(allProducts);
+        // res.status(200).json({respuesta: "Excelente"});
     }
 
     /**

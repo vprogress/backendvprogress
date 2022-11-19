@@ -24,6 +24,14 @@ class UserController extends UserDao{
         UserController.createUser(newMail, req.body, res);
     }
 
+    public insertUserGuest(req: Request, res: Response){
+        const newMail={userMail:req.body.userMail};
+        UserController.createUserPublic(newMail, req.body, res);
+    }
+
+    public autenticUser(req: Request, res: Response){
+        UserController.initSesion(req.body, res);
+    }
 
 
     public delUser(req: Request, res: Response){
